@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skill Extraction - AI Career Tracker</title>
+  <link rel="stylesheet" href="FRONT END/assets/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" aria-label="Main">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">🤖</div>
+        <div class="brand-text">
+          <h1 class="brand-title">AI Career Tracker</h1>
+          <p class="brand-sub">Learning • Skills • Careers</p>
+        </div>
+        <button class="sidebar-toggle" aria-label="Collapse sidebar" title="Collapse sidebar">≡</button>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <ul>
+          <li><a class="nav-link" href="learning-log.html">Learning Log</a></li>
+          <li><a class="nav-link active" href="skill-extraction.html">Skill Extraction</a></li>
+          <li><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li><a class="nav-link" href="roadmap.html">Career Roadmap</a></li>
+          <li><a class="nav-link" href="suggestions.html">Suggestions</a></li>
+          <li><a class="nav-link" href="gamification.html">Gamification</a></li>
+          <li><a class="nav-link" href="reports.html">Reports</a></li>
+          <li><a class="nav-link" href="collaboration.html">Collaboration</a></li>
+          <li><a class="nav-link" href="ai-agent.html">AI Agent</a></li>
+          <li><a class="nav-link" href="privacy.html">Privacy</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="content">
+      <header class="topbar">
+        <h2>AI-Powered Skill Extraction</h2>
+      </header>
+      <main class="main">
+        <section class="section">
+          <header class="section-head">
+            <h2>Extracted Skills & Concepts</h2>
+            <p class="muted">NLP model extracts keywords, concepts, frameworks, and maps to AI subdomains.</p>
+          </header>
+          <article class="card">
+            <h3>Detected Skills & Concepts</h3>
+            <div class="chips" id="chipCloud" aria-live="polite">
+              <span class="chip">Transformers</span>
+              <span class="chip chip-emerald">Attention</span>
+              <span class="chip chip-amber">Backpropagation</span>
+              <span class="chip">CNN</span>
+              <span class="chip">Data Augmentation</span>
+              <span class="chip">AdamW</span>
+              <span class="chip">Tokenization</span>
+            </div>
+            <div class="actions">
+              <button class="btn-secondary" title="Re-run extraction">⟳ Re-run extraction</button>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Classification</h3>
+            <div class="taxonomy">
+              <div class="tax-row">
+                <span class="tax-label">Subdomains</span>
+                <div class="tax-values">
+                  <span class="tag tag-emerald">NLP</span>
+                  <span class="tag">DL</span>
+                  <span class="tag">CV</span>
+                </div>
+              </div>
+              <div class="tax-row">
+                <span class="tax-label">Frameworks</span>
+                <div class="tax-values">
+                  <span class="tag">PyTorch</span>
+                  <span class="tag">TensorFlow</span>
+                </div>
+              </div>
+              <div class="tax-row">
+                <span class="tax-label">Taxonomy Links</span>
+                <div class="tax-values">
+                  <span class="badge">EU AI Skills • A2: Model Training</span>
+                  <span class="badge">EU AI Skills • B1: Data Handling</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script src="FRONT END/assets/skill-extraction.js"></script>
+</body>
+</html>

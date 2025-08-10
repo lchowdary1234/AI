@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Career Tracker</title>
+    <meta name="description" content="AI Career Tracker Based on Daily Learning Logs" />
+  <link rel="stylesheet" href="FRONT END/assets/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- Login Page -->
+    <div class="login-container" id="loginContainer">
+      <form class="login-form" id="loginFormPage" autocomplete="off">
+        <div class="login-logo">🤖</div>
+        <h2>Welcome to AI Career Tracker</h2>
+        <div class="login-fields">
+          <input type="text" id="loginUser" placeholder="Username" required autocomplete="username" />
+          <input type="password" id="loginPass" placeholder="Password" required autocomplete="current-password" />
+        </div>
+        <button type="submit" class="btn-primary login-btn">Login</button>
+        <div class="login-footer">Demo: <span class="muted">user / pass</span></div>
+      </form>
+    </div>
+
+    <!-- Main App -->
+    <div class="app" id="mainApp" style="display:none;">
+      <!-- Sidebar -->
+      <aside class="sidebar" aria-label="Main">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">🤖</div>
+          <div class="brand-text">
+            <h1 class="brand-title">AI Career Tracker</h1>
+            <p class="brand-sub">Learning • Skills • Careers</p>
+          </div>
+          <button class="sidebar-toggle" aria-label="Collapse sidebar" title="Collapse sidebar">≡</button>
+        </div>
+        <nav class="nav" aria-label="Primary">
+          <ul>
+            <li><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+            <li><a class="nav-link" href="reports.html">Reports</a></li>
+            <li><a class="nav-link" href="collaboration.html">Collaboration</a></li>
+            <li><a class="nav-link" href="settings.html">Settings</a></li>
+            <li><a class="nav-link active" href="index.html">Main App</a></li>
+            <li><a class="nav-link" href="login.html">Logout</a></li>
+          </ul>
+        </nav>
+        <div class="sidebar-footer">
+          <div class="streak-card" aria-live="polite">
+            <div class="streak-label">Current streak</div>
+            <div class="streak-value"><span id="streakDays">7</span> days 🔥</div>
+            <div class="streak-sub">Best: <strong>21</strong> days</div>
+          </div>
+          <div class="level-card">
+            <div class="level-row">
+              <span>NLP</span><span class="tag tag-emerald">Lv 3</span>
+            </div>
+            <div class="level-row">
+              <span>DL</span><span class="tag tag-amber">Lv 2</span>
+            </div>
+            <div class="level-row">
+              <span>RL</span><span class="tag">Lv 1</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="content">
+         Top bar 
+        <header class="topbar">
+          <form class="search" role="search" aria-label="Site">
+            <input type="search" placeholder="Search logs, skills, roles…" aria-label="Search" />
+          </form>
+          <div class="topbar-actions">
+            <button id="themeToggle" class="btn" aria-pressed="false" aria-label="Toggle theme">🌗 Theme</button>
+            <button id="expandAll" class="btn-secondary" title="Expand all sections">Expand all</button>
+            <div class="profile" aria-label="Account">
+              <div class="avatar" aria-hidden="true">👩‍💻</div>
+              <div class="profile-text">
+                <span class="profile-name">You</span>
+                <span class="profile-sub">Learner</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <main id="main" class="main" tabindex="-1">
+           1. Learning Log 
+          <section id="logs" class="section">
+            <header class="section-head">
+              <h2>1. User Learning Log Input</h2>
+              <p class="muted">Log what you learned today. Add mood, difficulty, and upload summaries.</p>
+            </header>
+
+            <div class="grid two">
+              <article class="card">
+                <h3>Daily Entry</h3>
+                <form id="logForm" class="form" novalidate>
+                  <div class="form-row">
+                    <label for="date">Date</label>
+                    <input id="date" type="date" required />
+                  </div>
+
+                  <div class="form-row">
+                    <label for="topics">Topics learned</label>
+                    <textarea id="topics" rows="5" placeholder="E.g., Transformer architectures, attention, training tips" required></textarea>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-col">
+                      <label for="time">Time spent (mins)</label>
+                      <input id="time" type="number" min="0" step="5" placeholder="60" required />
+                    </div>
+                    <div class="form-col">
+                      <label for="difficulty">Difficulty</label>
+                      <select id="difficulty">
+                        <option value="1">Easy</option>
+                        <option value="2">Moderate</option>
+                        <option value="3">Challenging</option>
+                        <option value="4">Hard</option>
+                      </select>
+                    </div>
+                    <div class="form-col">
+                      <label for="mood">Mood</label>
+                      <select id="mood">
+                        <option>😄 Energized</option>
+                        <option>🙂 Good</option>
+                        <option>😐 Neutral</option>
+                        <option>😫 Drained</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="upload" id="dropZone" aria-label="File upload">
+                      <input id="fileInput" type="file" accept=".pdf,.doc,.docx,.md,.txt" aria-label="Upload summary file" />
+                      <p><strong>Upload summary</strong> (PDF, Word, Markdown)</p>
+                      <p class="muted">Drag & drop or click to choose a file</p>
+                    </div>
+                  </div>
+
+                  <div class="form-actions">
+                    <button type="button" id="voiceBtn" class="btn" aria-pressed="false">🎤 Voice-to-text</button>
+                    <span id="voiceStatus" class="muted" role="status" aria-live="polite"></span>
+                    <div class="spacer"></div>
+                    <button type="submit" class="btn-primary">Save Log</button>
+                  </div>
+                </form>
+              </article>
+
+              <article class="card">
+                <h3>Recent Logs</h3>
+                <ul class="timeline" id="timeline" aria-live="polite">
+                  <li>
+                    <div class="tl-date">Aug 7</div>
+                    <div class="tl-body">
+                      <div class="tl-title">Backpropagation & Optimizers</div>
+                      <div class="tl-meta">Time: 45m • Diff: Moderate • Mood: 🙂</div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="tl-date">Aug 6</div>
+                    <div class="tl-body">
+                      <div class="tl-title">CNN Basics + Data Augmentations</div>
+                      <div class="tl-meta">Time: 90m • Diff: Hard • Mood: 😫</div>
+                    </div>
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+           2. AI Skill Extraction 
+          <section id="skills" class="section">
+            <header class="section-head">
+              <h2>2. AI-Powered Skill Extraction</h2>
+              <p class="muted">Extract keywords, concepts, frameworks, and map to AI subdomains and skill taxonomies.</p>
+            </header>
+
+            <div class="grid two">
+              <article class="card">
+                <h3>Detected Skills & Concepts</h3>
+                <div class="chips" id="chipCloud" aria-live="polite">
+                  <span class="chip">Transformers</span>
+                  <span class="chip chip-emerald">Attention</span>
+                  <span class="chip chip-amber">Backpropagation</span>
+                  <span class="chip">CNN</span>
+                  <span class="chip">Data Augmentation</span>
+                  <span class="chip">AdamW</span>
+                  <span class="chip">Tokenization</span>
+                </div>
+                <div class="actions">
+                  <button class="btn-secondary" title="Re-run extraction">↻ Re-run extraction</button>
+                </div>
+              </article>
+
+              <article class="card">
+                <h3>Classification</h3>
+                <div class="taxonomy">
+                  <div class="tax-row">
+                    <span class="tax-label">Subdomains</span>
+                    <div class="tax-values">
+                      <span class="tag tag-emerald">NLP</span>
+                      <span class="tag">DL</span>
+                      <span class="tag">CV</span>
+                    </div>
+                  </div>
+                  <div class="tax-row">
+                    <span class="tax-label">Frameworks</span>
+                    <div class="tax-values">
+                      <span class="tag">PyTorch</span>
+                      <span class="tag">TensorFlow</span>
+                    </div>
+                  </div>
+                  <div class="tax-row">
+                    <span class="tax-label">Taxonomy Links</span>
+                    <div class="tax-values">
+                      <span class="badge">EU AI Skills • A2: Model Training</span>
+                      <span class="badge">EU AI Skills • B1: Data Handling</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+           3. Progress Dashboard 
+          <section id="progress" class="section">
+            <header class="section-head">
+              <h2>3. Progress Tracker Dashboard</h2>
+              <p class="muted">Timeline, heatmaps, and time investment by domain.</p>
+            </header>
+
+            <div class="grid three">
+              <article class="card">
+                <h3>Timeline</h3>
+                <ul class="timeline compact">
+                  <li>
+                    <div class="tl-date">Week 1</div>
+                    <div class="tl-body">
+                      <div class="tl-title">Intro ML, Linear Models</div>
+                      <div class="tl-meta">7 logs</div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="tl-date">Week 2</div>
+                    <div class="tl-body">
+                      <div class="tl-title">CNNs + Augmentations</div>
+                      <div class="tl-meta">6 logs</div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="tl-date">Week 3</div>
+                    <div class="tl-body">
+                      <div class="tl-title">Transformers</div>
+                      <div class="tl-meta">8 logs</div>
+                    </div>
+                  </li>
+                </ul>
+              </article>
+
+              <article class="card">
+                <h3>Skill Heatmap</h3>
+                <div class="heatmap" id="heatmap" role="img" aria-label="Weekly learning heatmap"></div>
+                <div class="legend">
+                  <span class="legend-item"><i class="dot dot-0"></i>0</span>
+                  <span class="legend-item"><i class="dot dot-1"></i>1</span>
+                  <span class="legend-item"><i class="dot dot-2"></i>2</span>
+                  <span class="legend-item"><i class="dot dot-3"></i>3+</span>
+                </div>
+              </article>
+
+              <article class="card">
+                <h3>Time by Domain</h3>
+                <canvas id="timeChart" width="480" height="260" role="img" aria-label="Time investment chart"></canvas>
+                <div class="muted text-right">Placeholder chart</div>
+              </article>
+            </div>
+          </section>
+
+           4. Career Roadmap 
+          <section id="roadmap" class="section">
+            <header class="section-head">
+              <h2>4. Career Roadmap Matching</h2>
+              <p class="muted">Map your skills to roles and see readiness.</p>
+            </header>
+
+            <div class="grid three">
+              <article class="card role">
+                <div class="role-head">
+                  <h3>ML Engineer</h3>
+                  <span class="tag tag-emerald">Recommended</span>
+                </div>
+                <div class="bar">
+                  <div class="bar-fill w-72" aria-label="Readiness 72%" style="--w:72%"></div>
+                </div>
+                <ul class="checks">
+                  <li>✔ Model training & tuning</li>
+                  <li>✔ PyTorch/TensorFlow</li>
+                  <li>✱ Improve ML Ops</li>
+                </ul>
+                <button class="btn-primary">View roadmap</button>
+              </article>
+
+              <article class="card role">
+                <div class="role-head">
+                  <h3>Data Scientist</h3>
+                </div>
+                <div class="bar">
+                  <div class="bar-fill w-64" aria-label="Readiness 64%" style="--w:64%"></div>
+                </div>
+                <ul class="checks">
+                  <li>✔ Statistics & EDA</li>
+                  <li>✱ Strengthen SQL</li>
+                  <li>✱ Communication</li>
+                </ul>
+                <button class="btn-secondary">Compare skills</button>
+              </article>
+
+              <article class="card role">
+                <div class="role-head">
+                  <h3>Research Engineer</h3>
+                </div>
+                <div class="bar">
+                  <div class="bar-fill w-40" aria-label="Readiness 40%" style="--w:40%"></div>
+                </div>
+                <ul class="checks">
+                  <li>✔ DL fundamentals</li>
+                  <li>✱ Math foundations</li>
+                  <li>✱ Paper reproduction</li>
+                </ul>
+                <button class="btn-secondary">Requirements</button>
+              </article>
+            </div>
+          </section>
+
+           5. Personalized Suggestions 
+          <section id="suggestions" class="section">
+            <header class="section-head">
+              <h2>5. Personalized Suggestions</h2>
+              <p class="muted">Topics, tutorials, and challenges based on your patterns.</p>
+            </header>
+
+            <div class="grid two">
+              <article class="card">
+                <h3>Recommended Topics</h3>
+                <ul class="list">
+                  <li><span class="tag">NLP</span> Subword tokenization</li>
+                  <li><span class="tag tag-amber">Math</span> Matrix calculus refresher</li>
+                  <li><span class="tag">DL</span> Regularization strategies</li>
+                </ul>
+              </article>
+              <article class="card">
+                <h3>Resources</h3>
+                <ul class="list links">
+                  <li><a href="#" aria-label="MOOC link">MOOC: Deep Learning Specialization</a><span class="badge">Course</span></li>
+                  <li><a href="#" aria-label="Paper link">Paper: Attention Is All You Need</a><span class="badge">Paper</span></li>
+                  <li><a href="#" aria-label="Tutorial link">Tutorial: PyTorch Lightning Crash Course</a><span class="badge">Tutorial</span></li>
+                </ul>
+              </article>
+            </div>
+
+            <article class="card">
+              <h3>Weekly Challenge</h3>
+              <p>Build a text classifier with a pretrained Transformer. Track F1 and training time.</p>
+              <div class="actions">
+                <button class="btn">Start</button>
+                <button class="btn-secondary">Add to backlog</button>
+              </div>
+            </article>
+          </section>
+
+           6. Gamification 
+          <section id="gamification" class="section">
+            <header class="section-head">
+              <h2>6. Gamification & Streaks</h2>
+              <p class="muted">Keep motivation high with levels and badges.</p>
+            </header>
+
+            <div class="grid three">
+              <article class="card stat">
+                <div class="stat-label">Daily streak</div>
+                <div class="stat-value">7 🔥</div>
+                <div class="stat-sub">+1 vs last week</div>
+              </article>
+              <article class="card stat">
+                <div class="stat-label">XP this week</div>
+                <div class="stat-value">480</div>
+                <div class="stat-sub">Goal: 600</div>
+              </article>
+              <article class="card stat">
+                <div class="stat-label">Completed goals</div>
+                <div class="stat-value">3</div>
+                <div class="stat-sub">This month</div>
+              </article>
+            </div>
+
+            <div class="badges">
+              <div class="badge-tile">🏷️ NLP Novice</div>
+              <div class="badge-tile">🏷️ DL Explorer</div>
+              <div class="badge-tile">🏷️ Consistency +7</div>
+            </div>
+          </section>
+
+           7. Reports 
+          <section id="reports" class="section">
+            <header class="section-head">
+              <h2>7. Report Generator</h2>
+              <p class="muted">Export your progress for portfolios and updates.</p>
+            </header>
+
+            <article class="card">
+              <h3>Export</h3>
+              <div class="actions">
+                <button id="exportHtml" class="btn">Export HTML</button>
+                <button id="exportPdf" class="btn-primary">Save as PDF</button>
+              </div>
+              <p class="muted">Monthly summary: goals achieved, time invested, skills gained.</p>
+            </article>
+          </section>
+
+           8. Collaboration 
+          <section id="collaboration" class="section">
+            <header class="section-head">
+              <h2>8. Collaboration & Mentorship</h2>
+              <p class="muted">Share with mentors or cohorts.</p>
+            </header>
+
+            <div class="grid two">
+              <article class="card">
+                <h3>Share Progress</h3>
+                <div class="form-row">
+                  <label class="switch">
+                    <input id="shareToggle" type="checkbox" />
+                    <span class="slider" aria-hidden="true"></span>
+                    <span class="switch-label">Enable share link</span>
+                  </label>
+                </div>
+                <div class="form-row">
+                  <label for="shareLink">Share link</label>
+                  <input id="shareLink" type="url" readonly value="(disabled)" />
+                </div>
+                <div class="actions">
+                  <button id="copyLink" class="btn-secondary" disabled>Copy link</button>
+                </div>
+              </article>
+
+              <article class="card">
+                <h3>Mentorship</h3>
+                <ul class="list">
+                  <li>Invite mentor to review monthly report</li>
+                  <li>Join an “NLP Foundations” cohort</li>
+                  <li>Pair-learning match: weekly syncs</li>
+                </ul>
+                <div class="actions">
+                  <button class="btn">Find cohort</button>
+                </div>
+              </article>
+            </div>
+          </section>
+
+           9. AI Assistant 
+          <section id="agent" class="section">
+            <header class="section-head">
+              <h2>9. AI Agent (Assistant)</h2>
+              <p class="muted">Ask for next steps or career tips. Layout-only demo.</p>
+            </header>
+
+            <div class="chat card" aria-live="polite">
+              <div id="chatLog" class="chat-log" aria-label="Chat transcript">
+                <div class="msg bot">
+                  <div class="msg-bubble">Hi! I can analyze your logs and suggest next steps. What would you like to learn next?</div>
+                </div>
+              </div>
+              <form id="chatForm" class="chat-input" autocomplete="off">
+                <input id="chatText" type="text" placeholder="E.g., What should I learn next for NLP?" aria-label="Message" />
+                <button class="btn-primary" type="submit">Send</button>
+              </form>
+            </div>
+          </section>
+
+           10. Privacy 
+          <section id="privacy" class="section">
+            <header class="section-head">
+              <h2>10. Privacy & Data Control</h2>
+              <p class="muted">Local-first (browser) with optional sync later. Export or delete anytime.</p>
+            </header>
+
+            <div class="grid two">
+              <article class="card">
+                <h3>Local-first</h3>
+                <p class="muted">Your logs stay in your browser. No cloud sync enabled.</p>
+                <div class="form-row">
+                  <label class="switch">
+                    <input id="localOnly" type="checkbox" checked />
+                    <span class="slider" aria-hidden="true"></span>
+                    <span class="switch-label">Local only</span>
+                  </label>
+                </div>
+              </article>
+
+              <article class="card">
+                <h3>Export & Delete</h3>
+                <div class="actions">
+                  <button id="exportJson" class="btn">Export JSON</button>
+                  <button id="deleteAll" class="btn-danger">Delete all data</button>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <footer class="footer">
+            <p>© <span id="year"></span> AI Career Tracker. Layout demo. No data leaves your browser.</p>
+          </footer>
+        </main>
+      </div>
+    </div>
+
+  <script src="FRONT END/assets/app.js"></script>
+  </body>
+</html>

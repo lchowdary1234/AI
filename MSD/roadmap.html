@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Career Roadmap - AI Career Tracker</title>
+  <link rel="stylesheet" href="FRONT END/assets/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" aria-label="Main">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">🤖</div>
+        <div class="brand-text">
+          <h1 class="brand-title">AI Career Tracker</h1>
+          <p class="brand-sub">Learning • Skills • Careers</p>
+        </div>
+        <button class="sidebar-toggle" aria-label="Collapse sidebar" title="Collapse sidebar">≡</button>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <ul>
+          <li><a class="nav-link" href="learning-log.html">Learning Log</a></li>
+          <li><a class="nav-link" href="skill-extraction.html">Skill Extraction</a></li>
+          <li><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li><a class="nav-link active" href="roadmap.html">Career Roadmap</a></li>
+          <li><a class="nav-link" href="suggestions.html">Suggestions</a></li>
+          <li><a class="nav-link" href="gamification.html">Gamification</a></li>
+          <li><a class="nav-link" href="reports.html">Reports</a></li>
+          <li><a class="nav-link" href="collaboration.html">Collaboration</a></li>
+          <li><a class="nav-link" href="ai-agent.html">AI Agent</a></li>
+          <li><a class="nav-link" href="privacy.html">Privacy</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="content">
+      <header class="topbar">
+        <h2>Career Roadmap Matching</h2>
+      </header>
+      <main class="main">
+        <section class="section">
+          <header class="section-head">
+            <h2>Career Roadmap</h2>
+            <p class="muted">Map your skills to roles and see readiness.</p>
+          </header>
+          <div class="grid three">
+            <article class="card role">
+              <div class="role-head">
+                <h3>ML Engineer</h3>
+                <span class="tag tag-emerald">Recommended</span>
+              </div>
+              <div class="bar">
+                <div class="bar-fill w-72" aria-label="Readiness 72%" style="--w:72%"></div>
+              </div>
+              <ul class="checks">
+                <li>✔ Model training & tuning</li>
+                <li>✔ PyTorch/TensorFlow</li>
+                <li>✱ Improve ML Ops</li>
+              </ul>
+              <button class="btn-primary">View roadmap</button>
+            </article>
+            <article class="card role">
+              <div class="role-head">
+                <h3>Data Scientist</h3>
+              </div>
+              <div class="bar">
+                <div class="bar-fill w-64" aria-label="Readiness 64%" style="--w:64%"></div>
+              </div>
+              <ul class="checks">
+                <li>✔ Statistics & EDA</li>
+                <li>✱ Strengthen SQL</li>
+                <li>✱ Communication</li>
+              </ul>
+              <button class="btn-secondary">Compare skills</button>
+            </article>
+            <article class="card role">
+              <div class="role-head">
+                <h3>Research Engineer</h3>
+              </div>
+              <div class="bar">
+                <div class="bar-fill w-40" aria-label="Readiness 40%" style="--w:40%"></div>
+              </div>
+              <ul class="checks">
+                <li>✔ DL fundamentals</li>
+                <li>✱ Math foundations</li>
+                <li>✱ Paper reproduction</li>
+              </ul>
+              <button class="btn-secondary">Requirements</button>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script src="FRONT END/assets/roadmap.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard - AI Career Tracker</title>
+    <link rel="stylesheet" href="FRONT END/assets/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- Sidebar -->
+      <aside class="sidebar" aria-label="Main">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">🤖</div>
+          <div class="brand-text">
+            <h1 class="brand-title">AI Career Tracker</h1>
+            <p class="brand-sub">Learning • Skills • Careers</p>
+          </div>
+          <button class="sidebar-toggle" aria-label="Collapse sidebar" title="Collapse sidebar">≡</button>
+        </div>
+        <nav class="nav" aria-label="Primary">
+          <ul>
+            <li><a class="nav-link active" href="dashboard.html">Dashboard</a></li>
+            <li><a class="nav-link" href="reports.html">Reports</a></li>
+            <li><a class="nav-link" href="collaboration.html">Collaboration</a></li>
+            <li><a class="nav-link" href="settings.html">Settings</a></li>
+            <li><a class="nav-link" href="index.html">Main App</a></li>
+            <li><a class="nav-link" href="login.html">Logout</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="content">
+        <header class="topbar">
+          <h2>Dashboard</h2>
+        </header>
+        <main class="main">
+          <section class="section">
+            <header class="section-head">
+              <h2>Welcome to your Dashboard</h2>
+              <p class="muted">Overview of your learning progress and stats.</p>
+            </header>
+            <div class="grid three dashboard-widgets">
+              <article class="card stat animated fadeInUp" style="--delay:0.1s">
+                <div class="stat-label">Total Logs</div>
+                <div class="stat-value" id="totalLogs">12</div>
+                <div class="stat-sub">This month</div>
+              </article>
+              <article class="card stat animated fadeInUp" style="--delay:0.2s">
+                <div class="stat-label">Total Skills</div>
+                <div class="stat-value" id="totalSkills">8</div>
+                <div class="stat-sub">Extracted</div>
+              </article>
+              <article class="card stat animated fadeInUp" style="--delay:0.3s">
+                <div class="stat-label">Streak</div>
+                <div class="stat-value" id="streak">7 🔥</div>
+                <div class="stat-sub">Keep it up!</div>
+              </article>
+            </div>
+            <div class="dashboard-charts">
+              <article class="card animated fadeInUp" style="--delay:0.4s">
+                <h3>Learning Timeline</h3>
+                <canvas id="timelineChart" width="400" height="120"></canvas>
+              </article>
+              <article class="card animated fadeInUp" style="--delay:0.5s">
+                <h3>Skill Heatmap</h3>
+                <div class="heatmap" id="heatmap"></div>
+              </article>
+              <article class="card animated fadeInUp" style="--delay:0.6s">
+                <h3>Time by Domain</h3>
+                <canvas id="domainChart" width="400" height="120"></canvas>
+              </article>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+</main>
+    <script src="FRONT END/assets/dashboard.js"></script>
+  </body>
+</html>

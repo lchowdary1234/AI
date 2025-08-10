@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Learning Log - AI Career Tracker</title>
+  <link rel="stylesheet" href="FRONT END/assets/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" aria-label="Main">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">🤖</div>
+        <div class="brand-text">
+          <h1 class="brand-title">AI Career Tracker</h1>
+          <p class="brand-sub">Learning • Skills • Careers</p>
+        </div>
+        <button class="sidebar-toggle" aria-label="Collapse sidebar" title="Collapse sidebar">≡</button>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <ul>
+          <li><a class="nav-link active" href="learning-log.html">Learning Log</a></li>
+          <li><a class="nav-link" href="skill-extraction.html">Skill Extraction</a></li>
+          <li><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li><a class="nav-link" href="roadmap.html">Career Roadmap</a></li>
+          <li><a class="nav-link" href="suggestions.html">Suggestions</a></li>
+          <li><a class="nav-link" href="gamification.html">Gamification</a></li>
+          <li><a class="nav-link" href="reports.html">Reports</a></li>
+          <li><a class="nav-link" href="collaboration.html">Collaboration</a></li>
+          <li><a class="nav-link" href="ai-agent.html">AI Agent</a></li>
+          <li><a class="nav-link" href="privacy.html">Privacy</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="content">
+      <header class="topbar">
+        <h2>User Learning Log Input</h2>
+      </header>
+      <main class="main">
+        <section class="section">
+          <header class="section-head">
+            <h2>Daily Learning Log</h2>
+            <p class="muted">Log what you learned today. Add mood, difficulty, and upload summaries.</p>
+          </header>
+          <form class="form" id="logForm" novalidate>
+            <div class="form-row">
+              <label for="date">Date</label>
+              <input id="date" type="date" required />
+            </div>
+            <div class="form-row">
+              <label for="topics">Topics learned</label>
+              <textarea id="topics" rows="5" placeholder="E.g., Transformer architectures, attention, training tips" required></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-col">
+                <label for="time">Time spent (mins)</label>
+                <input id="time" type="number" min="0" step="5" placeholder="60" required />
+              </div>
+              <div class="form-col">
+                <label for="difficulty">Difficulty</label>
+                <select id="difficulty">
+                  <option value="1">Easy</option>
+                  <option value="2">Moderate</option>
+                  <option value="3">Challenging</option>
+                  <option value="4">Hard</option>
+                </select>
+              </div>
+              <div class="form-col">
+                <label for="mood">Mood</label>
+                <select id="mood">
+                  <option>😀 Energized</option>
+                  <option>🙂 Good</option>
+                  <option>😐 Neutral</option>
+                  <option>😫 Drained</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="upload" id="dropZone" aria-label="File upload">
+                <input id="fileInput" type="file" accept=".pdf,.doc,.docx,.md,.txt" aria-label="Upload summary file" />
+                <p><strong>Upload summary</strong> (PDF, Word, Markdown)</p>
+                <p class="muted">Drag & drop or click to choose a file</p>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="button" id="voiceBtn" class="btn" aria-pressed="false">🎤 Voice-to-text</button>
+              <span id="voiceStatus" class="muted" role="status" aria-live="polite"></span>
+              <div class="spacer"></div>
+              <button type="submit" class="btn-primary">Save Log</button>
+            </div>
+          </form>
+          <article class="card">
+            <h3>Recent Logs</h3>
+            <ul class="timeline" id="timeline" aria-live="polite">
+              <!-- Recent logs will appear here -->
+            </ul>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script src="FRONT END/assets/learning-log.js"></script>
+</body>
+</html>
